@@ -52,6 +52,7 @@
 
     --buttonColor: var(--blue);
     --buttonTextColor: var(--darkBlue);
+	--buttonCancelText: var(--lightGrey);
 
     --navTextColor: var(--medDarkBlue);
     --navColor: var(--lightBlue);
@@ -128,6 +129,19 @@ h3 {font-size: var(--h3);}
 h4 {font-size: var(--h4);}
 
 h5 {font-size: var(--h5);}
+
+.h1 {
+    margin-top: 0;
+    font-size: var(--h1);
+}
+
+.h2 {font-size: var(--h2);}
+
+.h3 {font-size: var(--h3);}
+
+.h4 {font-size: var(--h4);}
+
+.h5 {font-size: var(--h5);}
 
 small, .text_small {font-size: var(--smallText);}
 
@@ -255,7 +269,21 @@ p {
 hr {
     border: 0;
     border-top: var(--line);
-	height: 5rem;
+}
+
+input, textarea {
+    border: var(--line);
+    border-radius: 4px;
+    padding: 2px 5px;
+	display: block;
+}
+
+input.radio {
+	display: inline;
+}
+
+form {
+	margin-bottom: 2rem;
 }
 
 button {
@@ -274,7 +302,6 @@ button:hover {
     box-shadow:var(--level-2);
     color: var(--white);
     background-color: var(--darkBlue);
-    margin: 0;
 }
 
 button[disabled] {
@@ -285,7 +312,7 @@ button[disabled] {
 
 button.cancel {
     --buttonColor: var(--danger);
-    --textColor: var(--white);
+    --buttonTextColor: var(--buttonCancelText);
 }
 
 button.small {
@@ -303,8 +330,8 @@ button.plain {
 
 button.plain:hover {
     box-shadow: none;
-    border: none;
 }
+
 
 footer a {
     text-decoration: none;
@@ -368,7 +395,6 @@ footer p {
     margin-bottom: 0;
 }
 
-
 .book-emoji {
 	font-size: 1.5rem;
 }
@@ -425,6 +451,12 @@ aside {
     --justifyContent: space-around;
 }
 
+.profile-image {
+	width: 100%;
+	border-radius: 5px;
+}
+
+
 /* Media query to display grid, flex and increase font size */
 
 @media (min-width: 1150px) {
@@ -464,4 +496,8 @@ aside {
 		display: block;
 	}
 
+	.image-wrap {
+		float: right;
+		width: 33%;
+	}
 }

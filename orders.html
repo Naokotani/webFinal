@@ -10,9 +10,9 @@
 	<body>
 		<header>
 			<nav class="nav">
-			<div>
-				<a href="index.html" class="home-link"><span class="book-emoji">📖</span>Wonderful Bookstore‍</a>
-			</div>
+				<div>
+					<a href="index.html" class="home-link"><span class="book-emoji">📖</span>Wonderful Bookstore‍</a>
+				</div>
 				<ul>
 					<li>
 						<a href="orders.html">Checkout</a>
@@ -23,7 +23,64 @@
 		</header>
 		<main class="layout">
 			<h1>Wonderful Bookstore Checkout</h1>
-
+			<div class="grid">
+				<div class="card-container">
+					<a href="#">
+						<div class="card">
+							<header>
+								<h5>The Pearl</h5>
+								<p>John Steinbeck</p>
+							</header>
+							<img alt="pearl" src="images/pearl.jpg"/>
+						</div>
+					</a>
+					<a href="#">
+						<div class="card">
+							<header>
+								<h5>Crime and Punishment</h5>
+								<p>Fyodor Dostoevsky</p>
+							</header>
+							<img alt="crime" src="images/crime.jpg"/>
+						</div>
+					</a>
+					<a href="#">
+						<div class="card">
+							<header>
+								<h5>One Flew over the Cuckoo's Next</h5>
+								<p>Ken Kesey</p>
+							</header>
+							<img alt="flew" src="images/flew.jpg"/>
+						</div>
+					</a>
+				</div>
+				<div>
+					<form>
+						<h2>Shopping cart</h2>
+						<div class="grid">
+							<div>
+								<label for="name">Name</label>
+								<input name="name" type="text" value=""/>
+								<label for="address">Address</label>
+								<input name="address" type="text" value=""/>
+								<label for="cupon">Cupon Code</label>
+								<input name="cupon" type="text" value=""/>
+							</div>
+							<div>
+								<input type="radio" class="radio" id="html" name="fav_language" value="HTML">
+								<label for="html" class="radio">Visa</label><br>
+								<input type="radio" class="radio" id="css" name="fav_language" value="CSS">
+								<label for="css" class="radio">Mastercard</label><br>
+								<input type="radio" class="radio" id="javascript"
+									   name="fav_language" value="JavaScript">
+								<label for="javascript" class="radio">Paypal</label><br>
+								<button>Pay</button>
+								<button class="cancel">cancel</button>
+							</div>
+						</div>
+					</form>
+					<hr/>
+				</div>
+			</div>
 		</main>
 		<footer>
 		</footer>
