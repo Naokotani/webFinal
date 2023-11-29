@@ -1,13 +1,20 @@
 @font-face {
+    font-family: 'Inter', sans-serif;
+    src: url("https://fonts.googleapis.com/css2?family=Inter&display=swap" )
+}
+
+@font-face {
+    font-family: 'Libre Baskerville', serif;
+    src: url("https://fonts.googleapis.com/css2?family=+Baskerville&display=swap" )
+}
+
+@font-face {
     font-family: 'Archivo', sans-serif;
     font-family: 'Roboto', sans-serif;
     src: url('https://fonts.googleapis.com/css2?family=Archivo&family=Roboto&display=swap');
 }
 
-@font-face {
-    font-family: 'Noto Emoji', sans-serif;
-    src: url('https://fonts.googleapis.com/css2?family=Noto+Emoji&display=swap');
-}
+
 
 :root {
     /*Define colours as colours*/
@@ -43,7 +50,7 @@
     --linkColor: var(--green);
 
 	/* **Will I need cards?** */
-    --cardBorder: var(--purple);
+    --cardBorder: var(--lightGrey);
     --cardBg: var(--blue);
     --cardText: var(--white);
 
@@ -65,7 +72,7 @@
     /* Fonts */
     --headingFont: 'Archivo', sans-serif;
     --bodyFont: 'Roboto', sans-serif;
-    --baseFontSize: 175%;
+    --baseFontSize: 100%;
     --h1: 3.052rem;
     --h2: 2.441rem;
     --h3: 1.953rem;
@@ -87,7 +94,6 @@
     --borderRadius: 5px;
     --footerHeight: 9rem;
     --headerFooterHeight: calc(var(--headerHeight) + var(--footerHeight));
-}
 
 html {
     font-size: var(--baseFontSize);
@@ -134,105 +140,22 @@ small, .text_small {font-size: var(--smallText);}
 /*end type scale*/
 
 .layout {
-    padding: calc(1rem + var(--headerHeight)) var(--containerPadding);
+    padding: calc(3rem + var(--headerHeight))var(--containerPadding);
     min-height: calc(100vh - var(--footerHeight));
     max-width: 1660px;
     margin: auto;
-    background: var(--background);
-}
-
-.layout-mid {
-    padding: 1rem var(--containerPadding);
-    max-width: 1660px;
-    background: var(--background);
-    margin: auto;
-	margin-bottom: 3rem;
-}
-
-/* borrowed from https://www.w3schools.com/howto/howto_css_parallax.asp */
-.parallax {
-  background: url(../paper.jpg);
-  min-height: 350px; 
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: none;
-}
-.parallax-mid {
-  background: url(../paper.jpg);
-  min-height: 200px;
-  margin-bottom: 1rem;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 body {
-	box-sizing: border-box;
     font-family: var(--bodyFont);
     font-weight: 400;
     line-height: 1.75;
+    background: var(--background);
     color: var(--textColor);
 }
-
-.nav {
-
-    --headerBackground: var(--navColor);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: var(--headerBackground);
-    height: var(--headerHeight);
-    box-shadow: var(--level-2);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 var(--containerPadding);
-    z-index: 10;
-    padding: 2rem;
-}
-
-header nav li {
-    list-style: none;
-}
-
-.logo-h1 a {
-	font-size: var(--h5);
-	margin: none;
-	border: none;
-	color: var(--bodyFontColor);
-	line-height: var(--h5);
-}
-
-.logo-h1 {
-	border: none;
-}
-
-header nav a {
-    color: var(--navTextColor);
+a {
+    color: var(--linkColor);
     text-decoration: none;
-    font-size: var(--h5);
-}
-
-header nav a+a {
-	margin-left: 0.5rem;
-}
-
-header nav a:hover {
-	border-bottom: solid 1px var(--navTextColor);
-}
-
-header nav a.home-link {
-    font-size: var(--h5);
-	color: var(--bodyFontColor);
-	line-height: var(--h5);
-}
-
-header nav a.home-link:hover {
-	border: none;
 }
 
 footer {
@@ -244,18 +167,25 @@ footer {
     height: var(--footerHeight);
 }
 
-a {
+footer a {
     text-decoration: none;
+    color: var(--footerTextColor);
 }
-
+footer a + a {
+    margin-left: 5px;
+}
+footer p {
+    margin-bottom: none;
+    max-width: 0;
+}
 p {
     margin-bottom: 1rem;
+    max-width: 40em;
 }
 
 hr {
     border: 0;
     border-top: var(--line);
-	height: 5rem;
 }
 
 button {
@@ -306,78 +236,6 @@ button.plain:hover {
     border: none;
 }
 
-footer a {
-    text-decoration: none;
-    color: var(--footerTextColor);
-}
-footer a + a {
-    margin-left: 5px;
-}
-footer p {
-    margin-bottom: none;
-    max-width: 0;
-}
-
-.card-container {
-    --gridCols: 2;
-    /*display grid in media query*/
-    display: grid;
-    grid-template-columns: repeat(var(--gridCols), 1fr);
-    gap: 5px;
-}
-
-.inventory {
-	margin-top: 5rem;
-}
-
-.card {
-	background: var(--cardBg);
-    margin: 10px;
-    padding: 1em;
-    border: 1px solid var(--cardBorder);
-    border-radius: var(--borderRadius);
-	width: 250px;
-	min-height: 275px;
-    box-shadow: var(--level-2);
-	display: block;
-	margin: auto;
-	margin-bottom: 1rem;
-}
-
-.card a {
-    color: var(--white);
-}
-
-.card h5 {margin-top: 1rem;}
-
-.card img {
-	display: block;
-	max-height: 250px;
-	margin: auto;
-}
-
-.card header {
-	display: none;
-}
-
-.card > *:first-child {
-    margin-top: 0;
-}
-
-.card > *:last-child {
-    margin-bottom: 0;
-}
-
-
-.book-emoji {
-	font-size: 1.5rem;
-}
-
-.background-image {
-	position: fixed;
-	z-index: -1;
-}
-
 /* Basic grid ulitity classes. display none, changed in media query */
 
 .grid {
@@ -386,16 +244,6 @@ footer p {
     display: block;
     grid-template-columns: repeat(var(--gridCols), 1fr);
     gap: 5px;
-}
-
-aside img {
-	border-radius: 5px;
-	width: 100%;
-	display: none;
-}
-
-aside {
-	align-items: mid;
 }
 
 .aside-right {
@@ -408,6 +256,13 @@ aside {
     grid-gap: 20px;
 }
 
+.cols-3 {
+    --gridCols: 3;
+}
+
+.cols-4 {
+    --gridCols: 4;
+}
 
 /* Basic flex ulitity classes. display none, changed in media query */
 
@@ -421,47 +276,22 @@ aside {
     justify-content: start;
 }
 
+
 .flex-around {
     --justifyContent: space-around;
 }
 
 /* Media query to display grid, flex and increase font size */
-
-@media (min-width: 1150px) {
+@media only screen and (min-width: 500px) {
     :root{
-        --baseFontSize: 100%;
+        --baseFontSize: 112.5%;
     }
 
     .grid {
         display: grid;
     }
 
-	.flex {
-		display: flex;
-	}
-
-	.parallax {
-		display: block;
-	}
-
-	.cols-3 {
-		--gridCols: 3;
-	}
-	
-	.cols-4 {
-		--gridCols: 4;
-	}
-
-	.card header {
-		display: block;
-	}
-
-	.card {
-		min-height: 425px;
-	}
-
-	aside img {
-		display: block;
-	}
-
+    .flex {
+        display: flex;
+    }
 }
