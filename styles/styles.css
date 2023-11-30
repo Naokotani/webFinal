@@ -44,8 +44,8 @@
 
 	/* **Will I need cards?** */
     --cardBorder: var(--purple);
-    --cardBg: var(--blue);
-    --cardText: var(--white);
+    --cardBg: var(--purple);
+    --cardText: var(--lightOrange);
 
     --blockquoteBg: var(--lightBlue);
     --blockquoteText: var(--medDarkBlue);
@@ -152,6 +152,7 @@ small, .text_small {font-size: var(--smallText);}
     min-height: calc(100vh - var(--footerHeight));
     max-width: 1660px;
     margin: auto;
+	padding-bottom: 1rem;
     background: var(--background);
 }
 
@@ -165,22 +166,22 @@ small, .text_small {font-size: var(--smallText);}
 
 /* borrowed from https://www.w3schools.com/howto/howto_css_parallax.asp */
 .parallax {
-  background: url(../paper.jpg);
-  min-height: 350px; 
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: none;
+	background: url(../paper.jpg);
+	min-height: 350px; 
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: none;
 }
 .parallax-mid {
-  background: url(../paper.jpg);
-  min-height: 200px;
-  margin-bottom: 1rem;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+	background: url(../paper.jpg);
+	min-height: 200px;
+	margin-bottom: 1rem;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 body {
@@ -192,7 +193,6 @@ body {
 }
 
 .nav {
-
     --headerBackground: var(--navColor);
     position: fixed;
     top: 0;
@@ -249,6 +249,10 @@ header nav a.home-link:hover {
 	border: none;
 }
 
+.feature-books {
+	margin-top: 3rem;
+}
+
 footer {
     --footerTextColor: var(--footerText);
     color: var(--footerTextColor);
@@ -256,6 +260,7 @@ footer {
     padding: 2rem var(--containerPadding);
     text-align: center;
     height: var(--footerHeight);
+	margin-top: 3rem;
 }
 
 a {
@@ -264,6 +269,62 @@ a {
 
 p {
     margin-bottom: 1rem;
+}
+
+
+p a,
+blockquote a {
+    color: var(--linkColor);
+    text-decoration: none;
+    border-bottom: solid 2px var(--linkColor);
+}
+
+blockquote a {
+    --linkColor: var(--purple);
+}
+
+blockquote {
+    margin: 10px;
+    max-width: 40rem;
+    border-radius: 3px;
+    padding: 2em;
+}
+
+blockquote.blockquote {
+    background: var(--blockquoteBg);
+    box-shadow: var(--level-3);
+    color: var(--blockquoteText);
+}
+
+blockquote h3 {
+	margin-top: 0;
+}
+
+
+aside.feature img {
+	border-radius: 5px;
+	max-height: 100%;
+	display: none;
+}
+
+aside.feature {
+	max-height: 35rem;
+	align-items: center;
+	justify-content: center;
+}
+
+div.feature {
+	padding: 3rem 0 3rem 0;
+}
+
+article {
+	max-height: 35rem;
+}
+
+
+article+article {
+	max-height: 35rem;
+	margin-top: 1rem;
 }
 
 hr {
@@ -359,27 +420,36 @@ footer p {
 .card {
 	background: var(--cardBg);
     margin: 10px;
-    padding: 1em;
     border: 1px solid var(--cardBorder);
     border-radius: var(--borderRadius);
 	width: 250px;
-	min-height: 275px;
     box-shadow: var(--level-2);
 	display: block;
 	margin: auto;
 	margin-bottom: 1rem;
+	overflow: hidden;
 }
 
 .card a {
     color: var(--white);
 }
 
-.card h5 {margin-top: 1rem;}
+.card div {
+	max-height: 325px;
+	overflow: hidden;
+}
+
+.card h5 {
+	margin-top: 1rem;
+	margin-bottom: 0;
+    padding: 0 1rem 0 1rem;
+    color: var(--cardText);
+}
 
 .card img {
 	display: block;
-	max-height: 250px;
 	margin: auto;
+	width: 100%;
 }
 
 .card header {
@@ -406,15 +476,6 @@ footer p {
 /* Basic grid ulitity classes. display none, changed in media query */
 
 
-aside img {
-	border-radius: 5px;
-	width: 100%;
-	display: none;
-}
-
-aside {
-	align-items: mid;
-}
 
 .aside-right {
     grid-template-columns: 67% 33%;
@@ -489,15 +550,25 @@ aside {
 	}
 
 	.card {
-		min-height: 425px;
+		min-height: 375px;
 	}
 
-	aside img {
+	aside.feature img {
 		display: block;
 	}
 
 	.image-wrap {
 		float: right;
 		width: 33%;
+	}
+
+	.layout.home-layout {
+		padding: 0 var(--containerPadding);
+		min-height: 40rem;
+	}
+
+	.feature-books {
+		height: 30rem;
+		margin-top: 3rem;
 	}
 }
