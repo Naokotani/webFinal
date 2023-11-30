@@ -347,7 +347,6 @@ footer p {
 
 .card-container {
     --gridCols: 2;
-    /*display grid in media query*/
     display: grid;
     grid-template-columns: repeat(var(--gridCols), 1fr);
     gap: 5px;
@@ -406,13 +405,6 @@ footer p {
 
 /* Basic grid ulitity classes. display none, changed in media query */
 
-.grid {
-    --gridCols: 2;
-    /*display grid in media query*/
-    display: block;
-    grid-template-columns: repeat(var(--gridCols), 1fr);
-    gap: 5px;
-}
 
 aside img {
 	border-radius: 5px;
@@ -434,8 +426,20 @@ aside {
     grid-gap: 20px;
 }
 
+.profile-image {
+	width: 100%;
+	border-radius: 5px;
+}
 
 /* Basic flex ulitity classes. display none, changed in media query */
+
+.grid {
+    --gridCols: 2;
+    /*display grid in media query*/
+    display: block;
+    grid-template-columns: repeat(var(--gridCols), 1fr);
+    gap: 5px;
+}
 
 .flex {
     --justifyContent: space-between;
@@ -451,10 +455,6 @@ aside {
     --justifyContent: space-around;
 }
 
-.profile-image {
-	width: 100%;
-	border-radius: 5px;
-}
 
 
 /* Media query to display grid, flex and increase font size */
@@ -472,16 +472,16 @@ aside {
 		display: flex;
 	}
 
-	.parallax {
-		display: block;
-	}
-
 	.cols-3 {
 		--gridCols: 3;
 	}
 	
 	.cols-4 {
 		--gridCols: 4;
+	}
+
+	.parallax {
+		display: block;
 	}
 
 	.card header {
