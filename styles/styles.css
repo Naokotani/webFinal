@@ -10,11 +10,15 @@
 }
 
 :root {
-    /*Define colours as colours*/
+	/* This is all CSS I have deloped myself over time based on
+	   The on the css design systems course at leveluptutorials.com
 
-    --red: #ff0003;
-    --yellow: #fde24f;
-    --white: #fff;
+	   The typography is taken from typescale.com and the elevations
+	   were origionally taken from materialUI but have been modified
+	   by me to suit my purposes. 
+   */
+
+    /*Define colours as colours*/
 
 	/* I actually designed this color palette myself             */
 	/* for another project and I thought it would be a nice fit. */
@@ -32,11 +36,15 @@
     --orange: #CD691A;
     --lightOrange: #F28E3F;
     --darkGreyBlue: #010F1C;
+	--red: #ff0003;
+	--darkRed: #b30002;
+	--white: #fff;
 
     /*define colour intentions*/
 
     --primary: var(--medDarkBlue);
     --danger: var(--red);
+	--dangerHover: green;
     --background: var(--white);
     --textColor: var(--darkGrey);
     --lineColor: var(--purple);
@@ -156,6 +164,9 @@ small, .text_small {font-size: var(--smallText);}
     background: var(--background);
 }
 
+/* I need seperate layout classes because of the way the parallax
+   sections divide up the page */
+
 .layout-mid {
     padding: 1rem var(--containerPadding);
     max-width: 1660px;
@@ -184,12 +195,16 @@ small, .text_small {font-size: var(--smallText);}
 	display: none;
 }
 
-body {
-	box-sizing: border-box;
-    font-family: var(--bodyFont);
-    font-weight: 400;
-    line-height: 1.75;
-    color: var(--textColor);
+/* Creates the shelf under the parallax effect above */
+.shelf {
+	width: 100%;
+	height: 3rem;
+    box-shadow: var(--shelf-shadow);
+}
+
+.bottom-shelf {
+	margin-top: 3rem;
+	margin-bottom: -1rem;
 }
 
 .nav {
@@ -211,6 +226,10 @@ body {
 
 header nav li {
     list-style: none;
+}
+
+.book-emoji {
+	font-size: 1.5rem;
 }
 
 .logo-h1 a {
@@ -245,16 +264,15 @@ header nav a.home-link {
 	line-height: var(--h5);
 }
 
-.shelf {
-	width: 100%;
-	height: 3rem;
-    box-shadow: var(--shelf-shadow);
+body {
+	box-sizing: border-box;
+    font-family: var(--bodyFont);
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--textColor);
 }
 
-.bottom-shelf {
-	margin-top: 3rem;
-	margin-bottom: -1rem;
-}
+
 
 header nav a.home-link:hover {
 	border: none;
@@ -264,14 +282,6 @@ header nav a.home-link:hover {
 	margin-top: 3rem;
 }
 
-footer {
-    --footerTextColor: var(--footerText);
-    color: var(--footerTextColor);
-    background: var(--footerColor);
-    padding: 2rem var(--containerPadding);
-    text-align: center;
-    height: var(--footerHeight);
-}
 
 a {
     text-decoration: none;
@@ -342,6 +352,29 @@ hr {
     border-top: var(--line);
 }
 
+footer {
+    --footerTextColor: var(--footerText);
+    color: var(--footerTextColor);
+    background: var(--footerColor);
+    padding: 2rem var(--containerPadding);
+    text-align: center;
+    height: var(--footerHeight);
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--footerTextColor);
+}
+footer a + a {
+    margin-left: 5px;
+}
+footer p {
+    margin-bottom: none;
+    max-width: 0;
+}
+
+/*Form Css */
+
 input, textarea {
     border: var(--line);
     border-radius: 4px;
@@ -369,21 +402,20 @@ button {
     transition: 0.3s ease-in-out box-shadow;
 }
 
-button:hover {
+button.primary:hover {
     box-shadow:var(--level-2);
     color: var(--white);
-    background-color: var(--darkBlue);
-}
-
-button[disabled] {
-    opacity: 0.4;
-    border: none;
-    margin: 2px;
+    background-color: var(--primary);
 }
 
 button.cancel {
     --buttonColor: var(--danger);
     --buttonTextColor: var(--buttonCancelText);
+}
+
+button.cancel:hover {
+    box-shadow:var(--level-2);
+	--buttonColor: var(--darkRed);
 }
 
 button.small {
@@ -403,17 +435,17 @@ button.plain:hover {
     box-shadow: none;
 }
 
+button[disabled] {
+    opacity: 0.4;
+    border: none;
+    margin: 2px;
+}
 
-footer a {
-    text-decoration: none;
-    color: var(--footerTextColor);
-}
-footer a + a {
-    margin-left: 5px;
-}
-footer p {
-    margin-bottom: none;
-    max-width: 0;
+/* Card CSS */
+
+.inventory {
+	/* margin for the card container in inventory */
+	margin-top: 5rem;
 }
 
 .card-container {
@@ -421,10 +453,6 @@ footer p {
     display: grid;
     grid-template-columns: repeat(var(--gridCols), 1fr);
     gap: 5px;
-}
-
-.inventory {
-	margin-top: 5rem;
 }
 
 .card {
@@ -474,18 +502,14 @@ footer p {
     margin-bottom: 0;
 }
 
-.book-emoji {
-	font-size: 1.5rem;
-}
 
+/*Remove? doesn't seem to appear anywhere */
 .background-image {
 	position: fixed;
 	z-index: -1;
 }
 
 /* Basic grid ulitity classes. display none, changed in media query */
-
-
 
 .aside-right {
     grid-template-columns: 67% 33%;
@@ -525,8 +549,6 @@ footer p {
 .flex-around {
     --justifyContent: space-around;
 }
-
-
 
 /* Media query to display grid, flex and increase font size */
 
