@@ -226,6 +226,7 @@ small, .text_small {font-size: var(--smallText);}
 
 header nav li {
     list-style: none;
+	display: inline;
 }
 
 .book-emoji {
@@ -361,6 +362,10 @@ footer {
     height: var(--footerHeight);
 }
 
+footer ul {
+	padding: 0;
+}
+
 footer a {
     text-decoration: none;
     color: var(--footerTextColor);
@@ -368,9 +373,14 @@ footer a {
 footer a + a {
     margin-left: 5px;
 }
+
+footer nav li {
+    list-style: none;
+	display: inline;
+}
+
 footer p {
     margin-bottom: none;
-    max-width: 0;
 }
 
 /*Form Css */
