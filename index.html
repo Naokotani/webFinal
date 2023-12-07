@@ -2,14 +2,19 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<!--Deactivated for development  -->
+		<!--Deactivated for development. You would uncomment this for production.  -->
 		<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">  -->
+
+		<!-- https://necolas.github.io/normalize.css/ I use this to normalize my css   -->
+		<!-- I load it first as a standalone css file to make sure my styles over ride it -->
 		<link href="styles/normalize.css" rel="stylesheet"/>
 		<link href="styles/styles.css" rel="stylesheet"/>
 		<title>Wonderful Bookstore</title>
 	</head>
 	<body>
 		<header>
+			<!-- I give the nav a class and then stlye it with nav.nav in case I want to use
+				 the nav element elsewhere (footer, side bars etc.) -->
 			<nav class="nav">
 				<div>
 					<h1 class="logo-h1">
@@ -29,10 +34,14 @@
 			</nav>
 		</header>
 		<main>
+			<!-- I create a div and add the bottom image for the shelf parallax effect -->
 			<div class="parallax"></div>
 			<img  class="shelf" alt="" src="images/shelf.jpg"/>
 			<div class="layout home-layout">
 				<h2>Daily Features</h2>
+				<!-- Ideally in a real application I would generate these cards iteratively.
+					 By creating the card-container and cols-4 utility classes make it easier
+					 to do different layouts and over ride them with media queries -->
 				<div class="cols-4 card-container feature-books">
 					<a href="pearl.html">
 						<div class="card">
@@ -68,12 +77,13 @@
 					</a>
 				</div>
 			</div>
-			<div class="parallax parallax-mid"></div>
-			<img  class="shelf" alt="" src="images/shelf.jpg"/>
 			<div class="layout-mid">
 				<h2>Featured Authors</h1>
+					<!-- Using the aside-right/aside-left utility classes means I can apply them easily in a loop
+						 for example if (i%2===0) {class="aside-right"} else {class="aside-right"} or similar -->
 					<div class="grid aside-right feature">
 						<article>
+							<!-- Styling a default blockquote can be a nice way to easily add some accent to some text -->
 							<blockquote class="blockquote">
 								<h3>John Steinbeck</h3>
 								His origins are clouded in mystery, but the Death Guard in his Warband claim, Felthius was once a slave that was dropped in the noxious pits of the Plague Planet. Most who suffer such a fate experience horrid deaths, but Felthius thrived and eventually earned the right to join the ranks of the Death Guard. No one but he knows if this is true, but since his rise hundreds of years ago, Felthius has become a powerful and effective commander. He has led the Tainted Sons to victory over the armies of dozens of Imperial worlds and has captured an Emperor's Spears Strike Cruiser, which became his flagship Rotbringer. In battles, Felthius can be found where the fighting is the thickest, and each of his victories bring him one step closer to becoming a Daemon Prince.
@@ -101,6 +111,7 @@
 						</article>
 					</div>
 			</div>
+			<!-- Again I create the div, but I add some extra classses to account for different layout -->
 			<div class="parallax-mid"></div>
 			<img  class="shelf" alt="" src="images/shelf.jpg"/>
 			<div class="layout-mid">

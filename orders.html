@@ -53,7 +53,8 @@
 					</a>
 				</div>
 				<div>
-					<form>
+					<!-- Simple fake payment form -->
+					<form id="payment">
 						<h2>Shopping cart</h2>
 						<div class="grid">
 							<div>
@@ -65,15 +66,26 @@
 								<input name="cupon" type="text" value=""/>
 							</div>
 							<div>
-								<input type="radio" class="radio" id="html" name="fav_language" value="HTML">
-								<label for="html" class="radio">Visa</label><br>
-								<input type="radio" class="radio" id="css" name="fav_language" value="CSS">
-								<label for="css" class="radio">Mastercard</label><br>
-								<input type="radio" class="radio" id="javascript"
-									   name="fav_language" value="JavaScript">
-								<label for="javascript" class="radio">Paypal</label><br>
-								<button class="primary">Pay</button>
-								<button class="cancel">cancel</button>
+								<!-- By giving them all the name "payment" they are grouped togeter
+									 I give them both the class radio so I can reuse the class and style
+									 like input.radio label.radio. If I had other radios I could do something
+									 like input.pay-radio -->
+								<input type="radio" class="radio" id="visa" name="payment" value="visa">
+								<label for="visa" class="radio">Visa</label><br>
+
+								<input type="radio" class="radio" id="mastercard" name="payment" value="mastercard">
+								<label for="mastercard" class="radio">Mastercard</label><br>
+
+								<input type="radio" class="radio" id="paypal"
+									   name="payment" value="paypay">
+								<label for="paypal" class="radio">Paypal</label><br>
+
+								<!-- I create primary and cancel utility classes to make button stlyes
+									 consistent so that intention is clear -->
+								<!-- by adding form and type="submit" the button becomes the primary button
+									 to submit the form -->
+								<button type="submit" form="payment" class="primary">Pay</button>
+								<button form="payment" class="cancel">cancel</button>
 							</div>
 						</div>
 					</form>

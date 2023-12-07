@@ -1,3 +1,4 @@
+/* I import the fonts from google fonts */
 @font-face {
     font-family: 'Archivo', sans-serif;
     font-family: 'Roboto', sans-serif;
@@ -39,18 +40,18 @@
 	--red: #ff0003;
 	--darkRed: #b30002;
 	--white: #fff;
+	--offWhite: #cee1f2;
 
     /*define colour intentions*/
 
     --primary: var(--medDarkBlue);
     --danger: var(--red);
 	--dangerHover: green;
-    --background: var(--white);
+    --background: var(--offWhite);
     --textColor: var(--darkGrey);
     --lineColor: var(--purple);
     --linkColor: var(--green);
 
-	/* **Will I need cards?** */
     --cardBorder: var(--purple);
     --cardBg: var(--purple);
     --cardText: var(--lightOrange);
@@ -69,12 +70,17 @@
     --footerText: var(--white);
 
     /* Styles */
+	/* I create a simple line variable to keep lines cosnsitent */
+	/* If I want a slightly different line style, then I can still use the line color */
+	/* variable, or I can change the line color variable to keep the style and change color */
     --line: solid 1px var(--lineColor);
 
     /* Fonts */
     --headingFont: 'Archivo', sans-serif;
     --bodyFont: 'Roboto', sans-serif;
     --baseFontSize: 175%;
+	/* I create variables from the type-scale.com css so I can use the variables to change text sizes */
+	/* consistently */
     --h1: 3.052rem;
     --h2: 2.441rem;
     --h3: 1.953rem;
@@ -83,6 +89,7 @@
     --smallText: 0.8rem;
 
     /*Elevation*/
+	/* I took these elevations from material ui and modified them */
     --level-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     --level-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --level-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -155,6 +162,15 @@ small, .text_small {font-size: var(--smallText);}
 
 /*end type scale*/
 
+/* Normally for a classless css style file like this I try to keep things roughly organized by */
+/* where they would flow on a page, header, body, footer etc. After that I have utility classes */
+/* and then media queries. Normally anything that is page specific would be in a seperate file */
+/* but this project is small enough that I just kept everything together. */
+
+body{
+	background: var(--background);
+}
+
 .layout {
     padding: calc(1rem + var(--headerHeight)) var(--containerPadding);
     min-height: calc(100vh - var(--footerHeight));
@@ -175,39 +191,10 @@ small, .text_small {font-size: var(--smallText);}
 	margin-bottom: 3rem;
 }
 
-/* borrowed from https://www.w3schools.com/howto/howto_css_parallax.asp */
-.parallax {
-	background: url(../paper.jpg);
-	min-height: 350px; 
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	display: none;
-}
-.parallax-mid {
-	background: url(../paper.jpg);
-	min-height: 200px;
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	display: none;
-}
 
 /* Creates the shelf under the parallax effect above */
-.shelf {
-	width: 100%;
-	height: 3rem;
-    box-shadow: var(--shelf-shadow);
-}
 
-.bottom-shelf {
-	margin-top: 3rem;
-	margin-bottom: -1rem;
-}
-
-.nav {
+nav.nav {
     --headerBackground: var(--navColor);
     position: fixed;
     top: 0;
@@ -272,8 +259,6 @@ body {
     line-height: 1.75;
     color: var(--textColor);
 }
-
-
 
 header nav a.home-link:hover {
 	border: none;
@@ -451,7 +436,39 @@ button[disabled] {
     margin: 2px;
 }
 
+/* borrowed from https://www.w3schools.com/howto/howto_css_parallax.asp */
+.parallax {
+	background: url(../paper.jpg);
+	min-height: 350px; 
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: none;
+}
+.parallax-mid {
+	background: url(../paper.jpg);
+	min-height: 200px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: none;
+}
+
+.shelf {
+	width: 100%;
+	height: 3rem;
+    box-shadow: var(--shelf-shadow);
+}
+
+.bottom-shelf {
+	margin-top: 3rem;
+	margin-bottom: -1rem;
+}
+
 /* Card CSS */
+/* I try to keep all of this together */
 
 .inventory {
 	/* margin for the card container in inventory */
@@ -512,15 +529,9 @@ button[disabled] {
     margin-bottom: 0;
 }
 
-
-/*Remove? doesn't seem to appear anywhere */
-.background-image {
-	position: fixed;
-	z-index: -1;
-}
+/* End of card css */
 
 /* Basic grid ulitity classes. display none, changed in media query */
-
 .aside-right {
     grid-template-columns: 67% 33%;
     grid-gap: 20px;
@@ -561,7 +572,9 @@ button[disabled] {
 }
 
 /* Media query to display grid, flex and increase font size */
-
+/* and tweak some other stuff a bit. */
+/* Often  I will do 2 media queries for large/medium/small but I didn't
+ Feel like anything in this project really needed it.*/
 @media (min-width: 1150px) {
     :root{
         --baseFontSize: 100%;
